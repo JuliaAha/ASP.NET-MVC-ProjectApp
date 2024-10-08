@@ -1,2 +1,2 @@
 # ASP.NET-MVC-ProjectApp
-Lab 2 i distribuerade system
+Lab 2 i distribuerade informationssystem
