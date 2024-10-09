@@ -30,7 +30,44 @@
         </dd>
     </dl>
 </div>
+
+<p/>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <h4>Tasks</h4>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                <b>Description</b>
+            </th>
+            <th>
+                <b>Last update</b>
+            </th>
+            <th>
+                <b>Status</b>
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.TaskVMs)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+        </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+<div>
     <a asp-action="Index">Back to List</a>
 </div>
