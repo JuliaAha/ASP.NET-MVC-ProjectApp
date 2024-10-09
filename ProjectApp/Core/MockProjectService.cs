@@ -24,8 +24,8 @@ public class MockProjectService : IProjectService
     //C# style static initializer
     static MockProjectService()
     {
-        Project p1 = new Project(1,"Learn ASP.NET with MVC", DateTime.Now, "Julia");
-        Project p2 = new Project(2,"Prepare for your bachelor Thesis", DateTime.Now, "Emma");
+        Project p1 = new Project(1,"Learn ASP.NET with MVC", DateTime.Now, "julg@kth.se");
+        Project p2 = new Project(2,"Prepare for your bachelor Thesis", DateTime.Now, "julg@kth.se");
         p2.AddTask(new Core.Task(1,"Fix my code"));
         p2.AddTask(new Core.Task(1, "Kill Emma"));
         _projects.Add(p1);
