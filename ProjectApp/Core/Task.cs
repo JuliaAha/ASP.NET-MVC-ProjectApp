@@ -3,7 +3,8 @@ namespace ProjectApp.Core;
 public class Task
 {
     public int Id { get; set; }
-    public string Name { get; set; }
+    public string Description { get; set; }
+    
     private DateTime _lastUpdated;
     public DateTime LastUpdated  { get => _lastUpdated; }
     private Status _status;
@@ -18,5 +19,12 @@ public class Task
             _status = value;
             _lastUpdated = DateTime.Now;
         }
+    }
+
+    public Task(int id, string description)
+    {
+        Id = id;
+        Description = description;
+        _lastUpdated = DateTime.Now;
     }
 }
