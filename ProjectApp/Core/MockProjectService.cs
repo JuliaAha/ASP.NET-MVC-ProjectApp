@@ -9,9 +9,10 @@ public class MockProjectService : IProjectService
         return _projects;
     }
     
-    public Project GetById(int id)
+    public Project GetById(int id, string userName)
     {
-       return _projects.Find(p => p.Id == id); 
+       return _projects.Find(p => p.Id == id && p.UserName == userName); 
+       
     }
 
     public void Add(string userName, string Title)
@@ -28,6 +29,6 @@ public class MockProjectService : IProjectService
         p2.AddTask(new Core.Task(1,"Find an interesting topic and company"));
         p2.AddTask(new Core.Task(1, "Kill Emma"));
         _projects.Add(p1);
-        _projects.Add(p1);
+        _projects.Add(p2);
     }
 }

@@ -29,7 +29,9 @@ namespace ProjectApp.Controllers
         // GET: ProjectsController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Project project = _projectService.GetById(id, "julg@kth.se"); //current user
+            if (project == null) return BadRequest(); //HTTP 400
+            
         }
         
         /*
