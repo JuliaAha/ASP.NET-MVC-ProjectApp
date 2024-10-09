@@ -31,7 +31,8 @@ namespace ProjectApp.Controllers
         {
             Project project = _projectService.GetById(id, "julg@kth.se"); //current user
             if (project == null) return BadRequest(); //HTTP 400
-            
+            ProjectDetailsVm detailsVm = ProjectDetailsVm.FromProject(project);
+            return View(detailsVm);
         }
         
         /*
