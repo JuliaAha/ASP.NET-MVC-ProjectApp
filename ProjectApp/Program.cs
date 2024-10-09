@@ -1,9 +1,13 @@
+using ProjectApp.Core;
+using ProjectApp.Core.Interfaces.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-//builder.Services.AddScoped<IProjectService, MockProjectService>();
+// Dependency injection of service into controller
+builder.Services.AddScoped<IProjectService, MockProjectService>();
    
 var app = builder.Build();
 

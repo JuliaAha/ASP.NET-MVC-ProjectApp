@@ -1,13 +1,29 @@
 using Microsoft.AspNetCore.Mvc;
+using ProjectApp.Core.Interfaces.Interfaces;
+using ProjectApp.Core;
+using ProjectApp.Models.Projects;
 
 namespace ProjectApp.Controllers
 {
     public class ProjectsController : Controller
     {
+        private IProjectService _projectService; 
+       
+        public ProjectsController(IProjectService projectService)
+        {
+            _projectService = projectService;
+        }
+        
         // GET: ProjectsController
         public ActionResult Index()
         {
-            return View();
+            List<Project> projects = _projectService.GetAllByUserName("dummy");
+            List<ProjectVm> projectVms = new List<ProjectVm>();
+            foreach (var project in projects)
+            {
+                projectVms.Add(ProjectVm.FromProject(project));
+            }
+            return View(projectVms);
         }
 
         // GET: ProjectsController/Details/5
@@ -15,7 +31,8 @@ namespace ProjectApp.Controllers
         {
             return View();
         }
-
+        
+        /*
         // GET: ProjectsController/Create
         public ActionResult Create()
         {
@@ -77,6 +94,6 @@ namespace ProjectApp.Controllers
             {
                 return View();
             }
-        }
+        }*/
     }
 }
