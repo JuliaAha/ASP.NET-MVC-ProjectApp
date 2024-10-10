@@ -21,7 +21,8 @@ public class TaskDb
     [Required] public Status Status { get; set; }
 
     //FK and navigation property
-    [ForeignKey("ProjectId")] public ProjectDb ProjectDb { get; set; }
+    [ForeignKey("ProjectId")] 
+    public ProjectDb ProjectDb { get; set; }
 
     public int ProjectId { get; set; } //vår främmande nyckel
 }

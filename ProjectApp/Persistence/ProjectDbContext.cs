@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using ProjectApp.Core;
 
 namespace ProjectApp.Persistence;
 
@@ -11,7 +12,7 @@ public class ProjectDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) //seed data
     {
-        ProjectDb pdb = new ProjectDb
+        ProjectDb pdb = new ProjectDb()
         {
             Id = -1, //seed date
             Title = "Learn ASP.NET Core with MVC",
@@ -26,7 +27,7 @@ public class ProjectDbContext : DbContext
             Id = -1,
             Description = "Follow the turtles",
             LastUpdated = DateTime.Now,
-            Status = Core.Status.IN_PROGRESS,
+            Status = Status.IN_PROGRESS,
             ProjectId = -1
         };
         TaskDb tdb2 = new TaskDb()
@@ -34,8 +35,8 @@ public class ProjectDbContext : DbContext
             Id = -2,
             Description = "Do it yourself",
             LastUpdated = DateTime.Now,
-            Status = Core.Status.TODO,
-            ProjectId = -2
+            Status = Status.TODO,
+            ProjectId = -1
         }; 
         modelBuilder.Entity<TaskDb>().HasData(tdb1);
         modelBuilder.Entity<TaskDb>().HasData(tdb2);

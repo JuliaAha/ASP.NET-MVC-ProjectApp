@@ -1,10 +1,9 @@
+using System.Data;
 using AutoMapper;
-using Microsoft.Build.Evaluation;
 using Microsoft.EntityFrameworkCore;
 using ProjectApp.Core.Interfaces;
 using Project = ProjectApp.Core.Project;
 using Task = ProjectApp.Core.Task;
-
 
 namespace ProjectApp.Persistence;
 
@@ -42,7 +41,7 @@ public class MySqlProjectPersistence : IProjectPersistence
             .Include(p => p.TaskDbs)
             .FirstOrDefault(); //null if not found
         
-        if (projectDb == null) throw new Exception("Project not found");
+        if (projectDb == null) throw new DataException("Project not found");
         
         Project project = _mapper.Map<Project>(projectDb);
         foreach (TaskDb taskDb in projectDb.TaskDbs)
