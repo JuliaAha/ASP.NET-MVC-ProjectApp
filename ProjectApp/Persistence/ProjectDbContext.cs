@@ -36,7 +36,7 @@ public class ProjectDbContext : DbContext
             LastUpdated = DateTime.Now,
             Status = Core.Status.TODO,
             ProjectId = -2
-        };
+        }; 
         modelBuilder.Entity<TaskDb>().HasData(tdb1);
         modelBuilder.Entity<TaskDb>().HasData(tdb2);
     }

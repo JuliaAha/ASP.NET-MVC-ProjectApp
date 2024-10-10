@@ -11,7 +11,7 @@ using ProjectApp.Persistence;
 namespace ProjectApp.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    [Migration("20241010095402_Initial")]
+    [Migration("20241010120706_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -48,7 +48,7 @@ namespace ProjectApp.Migrations
                         new
                         {
                             Id = -1,
-                            CreateDate = new DateTime(2024, 10, 10, 11, 53, 59, 586, DateTimeKind.Local).AddTicks(9250),
+                            CreateDate = new DateTime(2024, 10, 10, 14, 7, 5, 17, DateTimeKind.Local).AddTicks(710),
                             Title = "Learn ASP.NET Core with MVC",
                             UserName = "julg@kth.se"
                         });
@@ -85,7 +85,7 @@ namespace ProjectApp.Migrations
                         {
                             Id = -1,
                             Description = "Follow the turtles",
-                            LastUpdated = new DateTime(2024, 10, 10, 11, 53, 59, 586, DateTimeKind.Local).AddTicks(9630),
+                            LastUpdated = new DateTime(2024, 10, 10, 14, 7, 5, 17, DateTimeKind.Local).AddTicks(1280),
                             ProjectId = -1,
                             Status = 1
                         },
@@ -93,7 +93,7 @@ namespace ProjectApp.Migrations
                         {
                             Id = -2,
                             Description = "Do it yourself",
-                            LastUpdated = new DateTime(2024, 10, 10, 11, 53, 59, 586, DateTimeKind.Local).AddTicks(9640),
+                            LastUpdated = new DateTime(2024, 10, 10, 14, 7, 5, 17, DateTimeKind.Local).AddTicks(1300),
                             ProjectId = -2,
                             Status = 0
                         });

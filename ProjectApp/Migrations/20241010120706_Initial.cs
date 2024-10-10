@@ -59,15 +59,15 @@ namespace ProjectApp.Migrations
             migrationBuilder.InsertData(
                 table: "ProjectDbs",
                 columns: new[] { "Id", "CreateDate", "Title", "UserName" },
-                values: new object[] { -1, new DateTime(2024, 10, 10, 11, 53, 59, 586, DateTimeKind.Local).AddTicks(9250), "Learn ASP.NET Core with MVC", "julg@kth.se" });
+                values: new object[] { -1, new DateTime(2024, 10, 10, 14, 7, 5, 17, DateTimeKind.Local).AddTicks(710), "Learn ASP.NET Core with MVC", "julg@kth.se" });
 
             migrationBuilder.InsertData(
                 table: "TaskDbs",
                 columns: new[] { "Id", "Description", "LastUpdated", "ProjectId", "Status" },
                 values: new object[,]
                 {
-                    { -2, "Do it yourself", new DateTime(2024, 10, 10, 11, 53, 59, 586, DateTimeKind.Local).AddTicks(9640), -2, 0 },
-                    { -1, "Follow the turtles", new DateTime(2024, 10, 10, 11, 53, 59, 586, DateTimeKind.Local).AddTicks(9630), -1, 1 }
+                    { -2, "Do it yourself", new DateTime(2024, 10, 10, 14, 7, 5, 17, DateTimeKind.Local).AddTicks(1300), -2, 0 },
+                    { -1, "Follow the turtles", new DateTime(2024, 10, 10, 14, 7, 5, 17, DateTimeKind.Local).AddTicks(1280), -1, 1 }
                 });
 
             migrationBuilder.CreateIndex(
