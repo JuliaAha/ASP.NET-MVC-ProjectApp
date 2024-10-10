@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ProjectApp.Core;
+using ProjectApp.Core.Interfaces;
 using ProjectApp.Core.Interfaces.Interfaces;
 using ProjectApp.Persistence;
 
@@ -9,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // Dependency injection of service into controller
-builder.Services.AddScoped<IProjectService, MockProjectService>();
+builder.Services.AddScoped<IProjectService, ProjectService>();
 
 // auto mapping of data
 builder.Services.AddAutoMapper(typeof(Program));
@@ -17,7 +18,10 @@ builder.Services.AddAutoMapper(typeof(Program));
 //projectsdb
 builder.Services.AddDbContext<ProjectDbContext>(
     options => options.UseMySQL(builder.Configuration.GetConnectionString("ProjectDbConnection")));
-   
+
+//dependency injection of persistence into service
+builder.Services.AddScoped<IProjectPersistence, MySqlProjectPersistence>();
+    
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -37,4 +41,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-  
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.Run();
