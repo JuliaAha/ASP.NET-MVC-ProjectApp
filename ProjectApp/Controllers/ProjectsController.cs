@@ -1,3 +1,4 @@
+using System.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProjectApp.Core.Interfaces.Interfaces;
@@ -30,12 +31,18 @@ namespace ProjectApp.Controllers
         // GET: ProjectsController/Details/5
         public ActionResult Details(int id)
         {
-            Console.WriteLine($"Received Project: {id}");
-            Project project = _projectService.GetById(id, "julg@kth.se"); //current user
-            if (project == null) return BadRequest(); //HTTP 400
-            
-            ProjectDetailsVm detailsVm = ProjectDetailsVm.FromProject(project);
-            return View(detailsVm);
+            try
+            {
+                Project project = _projectService.GetById(id, "julg@kth.se"); //current user
+                if (project == null) return BadRequest(); //HTTP 400
+
+                ProjectDetailsVm detailsVm = ProjectDetailsVm.FromProject(project);
+                return View(detailsVm);
+            }
+            catch (DataException ex)
+            {
+                return BadRequest();
+            }
         }
         
         /*

@@ -1,3 +1,4 @@
+using System.Data;
 using ProjectApp.Core.Interfaces;
 using ProjectApp.Core.Interfaces.Interfaces;
 
@@ -20,7 +21,9 @@ public class ProjectService : IProjectService
 
     public Project GetById(int id, string userName)
     {
-        throw new NotImplementedException();
+        Project project = _projectPersistence.GetById(id, userName);
+        if(project == null) throw new DataException("project not found");  //TODO; skriv eget felmeddelande
+        return project;
     }
 
     public void Add(string userName, string Title)

@@ -1,7 +1,10 @@
 using AutoMapper;
 using Microsoft.Build.Evaluation;
+using Microsoft.EntityFrameworkCore;
 using ProjectApp.Core.Interfaces;
 using Project = ProjectApp.Core.Project;
+using Task = ProjectApp.Core.Task;
+
 
 namespace ProjectApp.Persistence;
 
@@ -32,12 +35,25 @@ public class MySqlProjectPersistence : IProjectPersistence
     }
     
 
-    public Core.Project GetById(int id, string userName)
+    public Project GetById(int id, string userName)
     {
-        throw new NotImplementedException();
+        ProjectDb projectDb = _dbcontext.ProjectDbs
+            .Where(p => p.Id == id && p.UserName.Equals(userName))
+            .Include(p => p.TaskDbs)
+            .FirstOrDefault(); //null if not found
+        
+        if (projectDb == null) throw new Exception("Project not found");
+        
+        Project project = _mapper.Map<Project>(projectDb);
+        foreach (TaskDb taskDb in projectDb.TaskDbs)
+        {
+            Task task = _mapper.Map<Task>(taskDb);
+            project.AddTask(task);
+        }
+        return project;
     }
 
-    public void Save(Core.Project project)
+    public void Save(Project project)
     {
         throw new NotImplementedException();
     }
