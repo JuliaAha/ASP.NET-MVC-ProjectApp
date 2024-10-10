@@ -6,7 +6,6 @@ using ProjectApp.Models.Projects;
 
 namespace ProjectApp.Controllers
 {
-    //[Authorize]
     public class ProjectsController : Controller
     {
         private IProjectService _projectService; 
@@ -19,7 +18,7 @@ namespace ProjectApp.Controllers
         // GET: ProjectsController
         public ActionResult Index()
         {
-            List<Project> projects = _projectService.GetAllByUserName("dummy");
+            List<Project> projects = _projectService.GetAllByUserName("julg@kth.se");
             List<ProjectVm> projectVms = new List<ProjectVm>();
             foreach (var project in projects)
             {

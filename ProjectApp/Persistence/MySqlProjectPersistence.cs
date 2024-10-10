@@ -1,6 +1,7 @@
 using AutoMapper;
 using Microsoft.Build.Evaluation;
 using ProjectApp.Core.Interfaces;
+using Project = ProjectApp.Core.Project;
 
 namespace ProjectApp.Persistence;
 
@@ -15,7 +16,7 @@ public class MySqlProjectPersistence : IProjectPersistence
         _mapper = mapper;
     }
 
-    public List<Project> GetAlByUserName(string userName)
+    public List<Project> GetAllByUserName(string userName)
     {
         var projectDbs = _dbcontext.ProjectDbs
             .Where(p => p.UserName == userName)
@@ -29,11 +30,7 @@ public class MySqlProjectPersistence : IProjectPersistence
         }
         return result;
     }
-
-    public List<Core.Project> GetAllByUserName(string userName)
-    {
-        throw new NotImplementedException();
-    }
+    
 
     public Core.Project GetById(int id, string userName)
     {

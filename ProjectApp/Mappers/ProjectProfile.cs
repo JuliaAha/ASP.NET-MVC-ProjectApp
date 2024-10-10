@@ -1,6 +1,6 @@
 using AutoMapper;
-using Microsoft.Build.Evaluation;
 using ProjectApp.Persistence;
+using ProjectApp.Core;
 
 namespace ProjectApp.Mappers;
 
