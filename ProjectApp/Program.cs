@@ -11,10 +11,12 @@ builder.Services.AddControllersWithViews();
 // Dependency injection of service into controller
 builder.Services.AddScoped<IProjectService, MockProjectService>();
 
+// auto mapping of data
+builder.Services.AddAutoMapper(typeof(Program));
+
+//projectsdb
 builder.Services.AddDbContext<ProjectDbContext>(
-    options => options.UseMySQL(
-        builder.Configuration.GetConnectionString(
-            "ProjectDbConnection")));
+    options => options.UseMySQL(builder.Configuration.GetConnectionString("ProjectDbConnection")));
    
 var app = builder.Build();
 
@@ -35,6 +37,4 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.Run();
+  
