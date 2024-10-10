@@ -1,5 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using ProjectApp.Core;
 using ProjectApp.Core.Interfaces.Interfaces;
+using ProjectApp.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,11 @@ builder.Services.AddControllersWithViews();
 
 // Dependency injection of service into controller
 builder.Services.AddScoped<IProjectService, MockProjectService>();
+
+builder.Services.AddDbContext<ProjectDbContext>(
+    options => options.UseMySQL(
+        builder.Configuration.GetConnectionString(
+            "ProjectDbConnection")));
    
 var app = builder.Build();
 
