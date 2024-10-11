@@ -1,6 +1,7 @@
 using System.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ProjectApp.Core.Interfaces.Interfaces;
 using ProjectApp.Core;
 using ProjectApp.Models.Projects;
@@ -9,13 +10,13 @@ namespace ProjectApp.Controllers
 {
     public class ProjectsController : Controller
     {
-        private IProjectService _projectService; 
-       
+        private IProjectService _projectService;
+
         public ProjectsController(IProjectService projectService)
         {
             _projectService = projectService;
         }
-        
+
         // GET: ProjectsController
         public ActionResult Index()
         {
@@ -25,6 +26,7 @@ namespace ProjectApp.Controllers
             {
                 projectVms.Add(ProjectVm.FromProject(project));
             }
+
             return View(projectVms);
         }
 
@@ -44,7 +46,7 @@ namespace ProjectApp.Controllers
                 return BadRequest();
             }
         }
-        
+
         // GET: ProjectsController/Create anropas när användaren vill se formulären
         public ActionResult Create()
         {
@@ -54,17 +56,27 @@ namespace ProjectApp.Controllers
         // POST: ProjectsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection) //skickas tillbaka till servern via denna metod
+        public ActionResult Create(CreateProjectVm createProjectVm) //skickas tillbaka till servern via denna metod
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid) //ett objekt som tagit emot data från klienten via jquery
+                {
+                    string title = createProjectVm.Title;
+                    string userName = "julg@kth.se"; //dummy user
+
+                    _projectService.Add(userName, title);
+                    return RedirectToAction("Index");
+                }
+
+                return View(createProjectVm);
             }
-            catch
+            catch (DataException ex) //TODO: should probably be more specific
             {
-                return View();
+                return View(createProjectVm);
             }
         }
+        /*
 
         // GET: ProjectsController/Edit/5
         public ActionResult Edit(int id)
@@ -106,6 +118,7 @@ namespace ProjectApp.Controllers
             {
                 return View();
             }
-        } 
+        }
+    }*/
     }
 }
