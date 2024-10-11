@@ -9,18 +9,18 @@ namespace ProjectApp.Persistence;
 
 public class MySqlProjectPersistence : IProjectPersistence
 {
-    private ProjectDbContext _dbcontext;
+    private readonly ProjectDbContext _dbContext;
     private readonly IMapper _mapper;
 
-    public MySqlProjectPersistence(ProjectDbContext dbcontext, IMapper mapper)
+    public MySqlProjectPersistence(ProjectDbContext dbContext, IMapper mapper)
     {
-        _dbcontext = dbcontext;
+        _dbContext = dbContext;
         _mapper = mapper;
     }
 
     public List<Project> GetAllByUserName(string userName)
     {
-        var projectDbs = _dbcontext.ProjectDbs
+        var projectDbs = _dbContext.ProjectDbs
             .Where(p => p.UserName == userName)
             .ToList();
 
@@ -36,7 +36,7 @@ public class MySqlProjectPersistence : IProjectPersistence
 
     public Project GetById(int id, string userName)
     {
-        ProjectDb projectDb = _dbcontext.ProjectDbs
+        ProjectDb projectDb = _dbContext.ProjectDbs
             .Where(p => p.Id == id && p.UserName.Equals(userName))
             .Include(p => p.TaskDbs)
             .FirstOrDefault(); //null if not found
@@ -54,6 +54,8 @@ public class MySqlProjectPersistence : IProjectPersistence
 
     public void Save(Project project)
     {
-        throw new NotImplementedException();
+        ProjectDb pdb = _mapper.Map<ProjectDb>(project);
+        _dbContext.ProjectDbs.Add(pdb);
+        _dbContext.SaveChanges();
     }
 }

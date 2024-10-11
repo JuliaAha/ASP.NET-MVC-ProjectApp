@@ -45,8 +45,7 @@ namespace ProjectApp.Controllers
             }
         }
         
-        /*
-        // GET: ProjectsController/Create
+        // GET: ProjectsController/Create anropas när användaren vill se formulären
         public ActionResult Create()
         {
             return View();
@@ -55,7 +54,7 @@ namespace ProjectApp.Controllers
         // POST: ProjectsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(IFormCollection collection) //skickas tillbaka till servern via denna metod
         {
             try
             {
@@ -107,6 +106,6 @@ namespace ProjectApp.Controllers
             {
                 return View();
             }
-        } */
+        } 
     }
 }

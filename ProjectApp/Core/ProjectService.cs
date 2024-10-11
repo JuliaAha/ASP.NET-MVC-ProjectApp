@@ -26,8 +26,12 @@ public class ProjectService : IProjectService
         return project;
     }
 
-    public void Add(string userName, string Title)
+    public void Add(string userName, string title)
     {
-        throw new NotImplementedException();
+        if(userName == null) throw new DataException("Username missing"); //TODO; skicka mer specifik exception
+        if (title == null || title.Length > 128) throw new DataException("title");
+        
+        Project project = new Project(title, userName); //Will set date
+        _projectPersistence.Save(project);
     }
 }
