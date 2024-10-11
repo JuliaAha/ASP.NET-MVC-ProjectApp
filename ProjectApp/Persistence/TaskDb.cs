@@ -18,7 +18,8 @@ public class TaskDb
     public DateTime LastUpdated { get; set; }
 
 
-    [Required] public Status Status { get; set; }
+    [Required] 
+    public Status Status { get; set; }
 
     //FK and navigation property
     [ForeignKey("ProjectId")] 

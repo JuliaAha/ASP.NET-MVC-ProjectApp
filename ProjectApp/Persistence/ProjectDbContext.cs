@@ -16,7 +16,7 @@ public class ProjectDbContext : DbContext
         {
             Id = -1, //seed date
             Title = "Learn ASP.NET Core with MVC",
-            CreateDate = DateTime.Now,
+            CreatedDate = DateTime.Now,
             UserName = "julg@kth.se",
             TaskDbs = new List<TaskDb>()
         };

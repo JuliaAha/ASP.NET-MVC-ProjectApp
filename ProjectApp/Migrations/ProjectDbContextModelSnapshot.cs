@@ -25,7 +25,7 @@ namespace ProjectApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreateDate")
+                    b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Title")
@@ -45,7 +45,7 @@ namespace ProjectApp.Migrations
                         new
                         {
                             Id = -1,
-                            CreateDate = new DateTime(2024, 10, 10, 14, 7, 5, 17, DateTimeKind.Local).AddTicks(710),
+                            CreatedDate = new DateTime(2024, 10, 11, 11, 37, 12, 916, DateTimeKind.Local).AddTicks(1090),
                             Title = "Learn ASP.NET Core with MVC",
                             UserName = "julg@kth.se"
                         });
@@ -82,7 +82,7 @@ namespace ProjectApp.Migrations
                         {
                             Id = -1,
                             Description = "Follow the turtles",
-                            LastUpdated = new DateTime(2024, 10, 10, 14, 7, 5, 17, DateTimeKind.Local).AddTicks(1280),
+                            LastUpdated = new DateTime(2024, 10, 11, 11, 37, 12, 916, DateTimeKind.Local).AddTicks(1580),
                             ProjectId = -1,
                             Status = 1
                         },
@@ -90,8 +90,8 @@ namespace ProjectApp.Migrations
                         {
                             Id = -2,
                             Description = "Do it yourself",
-                            LastUpdated = new DateTime(2024, 10, 10, 14, 7, 5, 17, DateTimeKind.Local).AddTicks(1300),
-                            ProjectId = -2,
+                            LastUpdated = new DateTime(2024, 10, 11, 11, 37, 12, 916, DateTimeKind.Local).AddTicks(1600),
+                            ProjectId = -1,
                             Status = 0
                         });
                 });

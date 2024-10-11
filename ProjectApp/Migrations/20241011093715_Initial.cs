@@ -25,7 +25,7 @@ namespace ProjectApp.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false),
                     UserName = table.Column<string>(type: "longtext", nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    CreatedDate = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,16 +58,16 @@ namespace ProjectApp.Migrations
 
             migrationBuilder.InsertData(
                 table: "ProjectDbs",
-                columns: new[] { "Id", "CreateDate", "Title", "UserName" },
-                values: new object[] { -1, new DateTime(2024, 10, 10, 14, 7, 5, 17, DateTimeKind.Local).AddTicks(710), "Learn ASP.NET Core with MVC", "julg@kth.se" });
+                columns: new[] { "Id", "CreatedDate", "Title", "UserName" },
+                values: new object[] { -1, new DateTime(2024, 10, 11, 11, 37, 12, 916, DateTimeKind.Local).AddTicks(1090), "Learn ASP.NET Core with MVC", "julg@kth.se" });
 
             migrationBuilder.InsertData(
                 table: "TaskDbs",
                 columns: new[] { "Id", "Description", "LastUpdated", "ProjectId", "Status" },
                 values: new object[,]
                 {
-                    { -2, "Do it yourself", new DateTime(2024, 10, 10, 14, 7, 5, 17, DateTimeKind.Local).AddTicks(1300), -2, 0 },
-                    { -1, "Follow the turtles", new DateTime(2024, 10, 10, 14, 7, 5, 17, DateTimeKind.Local).AddTicks(1280), -1, 1 }
+                    { -2, "Do it yourself", new DateTime(2024, 10, 11, 11, 37, 12, 916, DateTimeKind.Local).AddTicks(1600), -1, 0 },
+                    { -1, "Follow the turtles", new DateTime(2024, 10, 11, 11, 37, 12, 916, DateTimeKind.Local).AddTicks(1580), -1, 1 }
                 });
 
             migrationBuilder.CreateIndex(
