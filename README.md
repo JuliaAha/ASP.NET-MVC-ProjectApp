@@ -1,2 +1,2 @@
 # ASP.NET-MVC-ProjectApp
-Lab 2 i distribuerade informationssyste, MVC
+Sida med Projekt och Tasks, MVC
