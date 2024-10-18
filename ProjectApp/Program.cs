@@ -3,6 +3,8 @@ using ProjectApp.Core;
 using ProjectApp.Core.Interfaces;
 using ProjectApp.Core.Interfaces.Interfaces;
 using ProjectApp.Persistence;
+using Microsoft.AspNetCore.Identity;
+using ProjectApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,8 @@ builder.Services.AddAutoMapper(typeof(Program));
 //projectsdb
 builder.Services.AddDbContext<ProjectDbContext>(
     options => options.UseMySQL(builder.Configuration.GetConnectionString("ProjectDbConnection")));
+
+builder.Services.AddDefaultIdentity<AppIdentity>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AppIdentity>();
 
 //dependency injection of persistence into service
 builder.Services.AddScoped<IProjectPersistence, MySqlProjectPersistence>();
